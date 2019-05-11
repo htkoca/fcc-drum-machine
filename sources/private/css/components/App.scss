@@ -1,0 +1,47 @@
+.col-control, .col-panel {
+  padding: 1rem !important;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.display {
+  width: 20rem;
+  max-width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: $gray-200;
+  border-radius: $border-radius;
+  min-height: 2.5rem;
+}
+
+.switch.btn.btn-power {
+  width: 4rem;
+  margin-top: -0.2rem;
+}
+
+.switch.btn.btn-bank {
+  transition: all 0.2s ease;
+  &.on {
+    width: 9rem;
+  }
+  &.off {
+    width: 6rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .col-control, .col-panel {
+    min-height: 20rem;
+    flex: 1 1 auto;
+  }
+  .col-control {
+    border-right: 1px solid $gray-200;
+  }
+}
+@include media-breakpoint-down(sm) {
+  .col-control {
+    border-bottom: 1px solid $gray-200;
+  }
+}
