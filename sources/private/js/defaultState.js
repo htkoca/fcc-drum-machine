@@ -1,4 +1,4 @@
-export default [{
+export const banks = [{
   title: 'Heater Kit',
   pads: [{
     code: 81,
@@ -69,8 +69,8 @@ export default [{
     src: 'https://s3.amazonaws.com/freecodecamp/drums/punchy_kick_1.mp3'
   }, {
     code: 88,
-    title: 'Stitlee Stick',
-    src: 'https://s3.amazonaws.com/freecodecamp/drums/stitlee_stick_1.mp3'
+    title: 'Side Stick',
+    src: 'https://s3.amazonaws.com/freecodecamp/drums/side_stick_1.mp3'
   }, {
     code: 67,
     title: 'Snare',

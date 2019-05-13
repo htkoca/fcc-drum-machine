@@ -34,6 +34,7 @@ export default class Pad extends React.Component {
     this.setState({ clicked: true })
     this.props.updateDisplay(`Pad: ${this.props.title}`);
     try {
+      this.state.audio.current.volume = this.props.volume/100;
       this.state.audio.current.currentTime = 0;
       this.state.audio.current.play();
     } catch (err){

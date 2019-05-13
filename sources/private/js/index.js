@@ -7,7 +7,6 @@ import App from '@/js/components/App';
 
 // css
 import '@/css/index';
-import '@/data/quotes.json';
 
 // render app
 ReactDom.render(<App /> ,document.getElementById('react-root'));

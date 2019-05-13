@@ -7,7 +7,7 @@ import Button from '~/react-bootstrap/Button';
 import Pad from '@/js/components/Pad';
 
 // variables
-import banks from '@/js/banks.js';
+import { banks } from '@/js/defaultState';
 
 // export
 export default class App extends React.Component {
@@ -61,13 +61,14 @@ export default class App extends React.Component {
               <div className="col col-12 col-md-6 col-control">
                 <div className="row no-gutters">
                   { this.state.bankObj.pads.map((pad, idx) => (
-                    <Pad 
-                      power={this.state.power} 
-                      bank={this.state.bank} 
-                      code={pad.code} 
-                      title={pad.title} 
-                      src={pad.src} 
-                      updateDisplay={this.updateDisplay} 
+                    <Pad
+                      power={this.state.power}
+                      bank={this.state.bank}
+                      volume={this.state.volume}
+                      code={pad.code}
+                      title={pad.title}
+                      src={pad.src}
+                      updateDisplay={this.updateDisplay}
                       key={idx}
                     />
                   )) }
@@ -75,8 +76,8 @@ export default class App extends React.Component {
               </div>
               <div className="col col-12 col-md-6 col-panel">
                 <div className="mb-3">
-                  <Button 
-                    variant={this.state.power ? 'success' : 'danger'} 
+                  <Button
+                    variant={this.state.power ? 'success' : 'danger'}
                     onClick={this.handlePower}
                   >
                     Toggle Power
@@ -88,22 +89,22 @@ export default class App extends React.Component {
                 <div className="mb-0">
                   <div className="form-group">
                     <label htmlFor="volume">Volume</label>
-                    <input 
-                      id="volume" 
-                      className="form-control-range" 
-                      type="range" 
-                      min="1" 
-                      max="100" 
-                      value={this.state.volume} 
+                    <input
+                      id="volume"
+                      className="form-control-range"
+                      type="range"
+                      min="1"
+                      max="100"
+                      value={this.state.volume}
                       onChange={this.handleVolume}
                       disabled={!this.state.power}
                     />
                   </div>
                 </div>
                 <div className="mb-0">
-                  <Button 
-                    variant={this.state.bank ? 'warning' : 'primary'} 
-                    onClick={this.handleBank} 
+                  <Button
+                    variant={this.state.bank ? 'warning' : 'primary'}
+                    onClick={this.handleBank}
                     disabled={!this.state.power}
                   >
                     Change Drum Bank
