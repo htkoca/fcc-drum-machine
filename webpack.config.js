@@ -106,7 +106,7 @@ module.exports = function (env, argv) {
       new HtmlWebpackPlugin({
         hash: true,
         template: path.resolve(srcDir, 'index.html'),
-        filename: path.resolve(srcDir, 'index.html')
+        filename: path.resolve(distDir, 'index.html')
       }),
       new HtmlBeautifyPlugin({
         config: {
