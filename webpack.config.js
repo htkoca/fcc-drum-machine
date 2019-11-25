@@ -13,8 +13,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 // init variables
 const modulesDir = "./node_modules";
-const privateDir = "./private";
-const publicDir = "./public";
+const srcDir = "./src";
+const distDir = "./dist";
 
 // init mode functions
 function getMode(argv){
@@ -43,14 +43,14 @@ module.exports = function (env, argv) {
   let config = {
     // entry file and context
     entry: {
-      app: path.resolve(privateDir, 'js/index.js'),
+      app: path.resolve(srcDir, 'js/index.js'),
     },
-    context: path.resolve(privateDir),
+    context: path.resolve(srcDir),
     // aliases
     resolve: {
       extensions: ['.js', '.jsx', '.scss', '.sass', '.css'],
       alias: {
-        '@': path.resolve(privateDir),
+        '@': path.resolve(srcDir),
         '~': path.resolve(modulesDir)
       }
     },
@@ -60,10 +60,10 @@ module.exports = function (env, argv) {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [{
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"]
-          }
+          loader: "babel-loader"
+          // options: {
+          //   presets: ["@babel/preset-env", "@babel/preset-react"]
+          // }
         }]
       }, {
         test: /\.(sa|sc|c)ss$/,
@@ -105,8 +105,8 @@ module.exports = function (env, argv) {
     plugins: [
       new HtmlWebpackPlugin({
         hash: true,
-        template: path.resolve('./private/index.html'),
-        filename: path.resolve('./public/index.html')
+        template: path.resolve(srcDir, 'index.html'),
+        filename: path.resolve(srcDir, 'index.html')
       }),
       new HtmlBeautifyPlugin({
         config: {
@@ -123,7 +123,7 @@ module.exports = function (env, argv) {
     ],
     // js output
     output: {
-      path: path.resolve(publicDir),
+      path: path.resolve(distDir),
       filename: 'js/index.js'
     }
   }
@@ -135,7 +135,9 @@ module.exports = function (env, argv) {
       hints: false
     },
     config.devServer = {
+      contentBase: './dist',
       open: true,
+      hot: true,
       port: 3001
     }
   } else if (argv.mode !== 'production') {
