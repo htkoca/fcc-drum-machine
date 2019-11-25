@@ -77,7 +77,7 @@ export default class App extends React.Component {
               <div className="col col-12 col-md-6 col-panel">
                 <div className="mb-3">
                   <Button
-                    variant={this.state.power ? 'success' : 'danger'}
+                    variant={this.state.power ? 'danger' : 'success'}
                     onClick={this.handlePower}
                   >
                     Toggle Power
