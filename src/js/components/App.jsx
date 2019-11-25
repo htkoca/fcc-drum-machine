@@ -14,11 +14,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      power: true,
+      power: false,
       bank: 0,
       bankObj: banks[0],
       volume: 50,
-      display: 'Power: On'
+      display: 'Power: Off'
     };
     this.handlePower = this.handlePower.bind(this);
     this.handleVolume = this.handleVolume.bind(this);

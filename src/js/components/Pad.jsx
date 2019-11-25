@@ -21,6 +21,12 @@ export default class Pad extends React.Component {
   componentDidMount() {
     document.addEventListener('keydown', this.handleCode);
   }
+  componentDidUpdate() {
+    if(!this.props.power && this.state.audio.current.currentTime > 0) {
+      this.state.audio.current.pause();
+      this.state.audio.current.currentTime = 0;
+    }
+  }
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleCode);
   }
